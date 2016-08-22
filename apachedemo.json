@@ -184,7 +184,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/apache2-on-ubuntu-vm/install_apache.sh"
+            "https://https://raw.githubusercontent.com/sjohner/SCU2016/master/install_apache.sh"
           ],
           "commandToExecute": "sh install_apache.sh"
         }
