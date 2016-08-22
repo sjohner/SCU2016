@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "GEN-UNIQUE-8"
+      "value": "scu2016-apachedemo"
     },
     "adminUsername": {
       "value": "scuadmin"
