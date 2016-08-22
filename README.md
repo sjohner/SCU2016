@@ -1,2 +1,2 @@
 # SCU2016
-Slides and resources for System Center Univers 2016 talks
+Slides and resources for System Center Universe 2016 talks
