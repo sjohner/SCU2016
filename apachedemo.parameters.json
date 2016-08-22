@@ -6,13 +6,13 @@
       "value": "GEN-UNIQUE-8"
     },
     "adminUsername": {
-      "value": "ubuntu"
+      "value": "scuadmin"
     },
     "adminPassword": {
       "value": "GEN-PASSWORD"
     },
     "dnsNameForPublicIP": {
-      "value": "GEN-UNIQUE"
+      "value": "jhnrscu2016"
     }
   }
 }
