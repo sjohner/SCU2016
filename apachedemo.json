@@ -58,6 +58,18 @@
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
   },
   "resources": [
+    { 
+     "apiVersion": "2015-01-01", 
+     "name": "nestedTemplate", 
+     "type": "Microsoft.Resources/deployments", 
+     "properties": { 
+       "mode": "incremental",
+       "parametersLink": { 
+          "uri":"https://raw.githubusercontent.com/sjohner/SCU2016/master/apachedemo.parameters.json",
+          "contentVersion":"1.0.0.0"
+       } 
+     } 
+    },
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[parameters('newStorageAccountName')]",
