@@ -2,9 +2,6 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-05-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "newStorageAccountName": {
-      "value": "scu2016-apachedemo"
-    },
     "adminUsername": {
       "value": "scuadmin"
     },
@@ -12,7 +9,7 @@
       "value": "GEN-PASSWORD"
     },
     "dnsNameForPublicIP": {
-      "value": "scu2016-apachedemo"
+      "value": "scu2016apachedemo"
     }
   }
 }
