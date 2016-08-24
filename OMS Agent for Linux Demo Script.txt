@@ -1,0 +1,45 @@
+# Screenplay for OMS Agent for Linux Demo
+
+# Install collectd deamon
+apt-get install collectd --no-install-recommends collectd
+
+# Modify config /etc/collectd/collectd.conf and uncomment uptime and users
+
+# Install OMS agent for Linux
+
+# Download source
+wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.2.0-25/omsagent-1.2.0-25.universal.x64.sh
+
+# Extract OMS agent
+sudo sh omsagent-1.1.0-217.universal.x64.sh --extract
+
+~/omsbundle.5520$ ls -la
+total 20
+drwxr-xr-x 5 root    root    4096 Aug 21 21:50 .
+drwxr-xr-x 5 sjohner sjohner 4096 Aug 21 21:50 ..
+drwxr-xr-x 2 root    root    4096 Aug 21 21:50 098
+drwxr-xr-x 2 root    root    4096 Aug 21 21:50 100
+drwxr-xr-x 2 root    root    4096 Aug 21 21:50 oss-kits
+
+# Show snippet where OpenSSL version is checked
+vim omsagent-1.1.0-217.universal.x64.sh
+
+# Line number 198
+OPENSSL_SYSTEM_VERSION_098=`echo $OPENSSL_SYSTEM_VERSION_FULL | grep -Eq '^0.9.8'; echo $?`
+OPENSSL_SYSTEM_VERSION_100=`echo $OPENSSL_SYSTEM_VERSION_FULL | grep -Eq '^1.0.'; echo $?`
+if [ $OPENSSL_SYSTEM_VERSION_098 = 0 ]; then
+    TMPBINDIR=098
+elif [ $OPENSSL_SYSTEM_VERSION_100 = 0 ]; then
+    TMPBINDIR=100
+
+# Install Python dependency
+apt-get install python-ctype
+
+# Run installer, include --collectd option
+sudo sh ./omsagent-1.2.0-25.universal.x64.sh --upgrade --collectd -w <YOUR OMS WORKSPACE ID> -s <YOUR OMS WORKSPACE PRIMARY KEY>
+
+# Restart collectd to make configuration done by agent installer effective
+sudo service collectd restart
+
+# Show collectd config added by OMS agent
+less /etc/collectd/collectd.conf.d/oms.conf
