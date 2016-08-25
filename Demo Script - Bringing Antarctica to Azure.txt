@@ -1,0 +1,47 @@
+## Azure CLI and ARM template
+
+# Azure cli mode
+azure config mode --help
+
+# Create resource groups
+azure group list
+azure group create -n 'SCU2016' -l 'westeurope'
+
+# Create VM using ARM template (e.g. quickstart templates on GitHub)
+# https://github.com/Azure/azure-quickstart-templates/blob/master/apache2-on-ubuntu-vm/azuredeploy.json
+azure group deployment create -g 'SCU2016' -n 'scu2016-armdemo' --template-uri https://raw.githubusercontent.com/sjohner/SCU2016/master/apachedemo.json --parameters-file apachedemo.parameters.json --verbose
+
+# Create VM from CLI
+azure vm quick-create --help
+azure vm quick-create -g 'SCU2016' -n 'scu2016-clidemo' -z 'standard_a0' -u 'scuadmin' -p 'P@ssw0rd!' -y 'Linux' -Q canonical:ubuntuserver:16.04.0-LTS:latest --json --verbose
+
+# Get VM image
+azure vm image list westeurope canonical ubuntuserver
+
+# Get VM size
+azure vm sizes --location westeurope
+
+# Launch demo site
+# http://scu2016apachedemo.westeurope.cloudapp.azure.com/
+
+
+## Puppet Deployment
+
+# Show Service Principal in Azure or in CLI
+azure ad sp list
+
+# Show Puppet config (local lab) and apply on LabVM03
+sudo vim /etc/puppet/manifests/site.pp
+
+# Add another file to be present in temp directory
+ssh labvm03
+sudo puppet agent --test
+
+# Show Puppet config (azure)
+sudo puppet module list
+sudo vim /etc/puppet/manifests/scu2016demo.pp
+
+# Deploy VM
+sudo puppet apply /etc/puppet/manifests/scu2016demo.pp --debug
+
+# Connect using SSH
