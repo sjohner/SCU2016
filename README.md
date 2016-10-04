@@ -15,4 +15,4 @@ In this session you will learn, experience and understand Linux IaaS deployment 
 See also the list of [contributors](https://github.com/sjohner/SCU2016/contributors) who participated in this project.
 
 ## License
-This project is licensed under the GNU General Public License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License - see the [LICENSE](LICENSE) file for details
